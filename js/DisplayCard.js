@@ -1,71 +1,46 @@
+//Khai báo đối tượng Image với các thuộc tính: name - tên thẻ img/ status - trạng thái thẻ/ matchStatus - trạng thái khi match
 class Image {
     name;
     status;
-    gg;
+    matchStatus;
 
     constructor(name) {
         this.name = name;
         this.status = false;
-        this.gg = false;
+        this.matchStatus = false;
     }
 }
-
+//Tạo một mảng 2 chiều, để in ra các thẻ dưới dạng table.
 let listImg = [[], [], [], []];
 let nameImg1 = ['chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau', 'chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau'];
 let nameImg = nameImg1.sort(() => Math.random() - 0.5);
-let count = 0
+let count = 0;
 for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
         listImg[i][j] = new Image(nameImg[count]);
         count++
     }
 }
-
+//Function, điều kiện để in ra thẻ có nội dung ảnh và thẻ trắng (thẻ up)
 function showTable() {
-    let tableCard = '<table border="1" cellspacing="1" width="500">'
+    let tableCard = '<table>'; //Tạo 1 table có 4hàgx4cột chứa các phần tử của mảng 2 chiều listImg
     for (let i = 0; i < listImg.length; i++) {
-        tableCard += '<tr>';
+        tableCard += '<tr class="table">';
         for (let j = 0; j < listImg[0].length; j++) {
             let srcImg;
-            if (listImg[i][j].status === true || listImg[i][j].gg === true) {
-                srcImg = "img/" + listImg[i][j].name + ".png"
+            if (listImg[i][j].status === true ) {
+                srcImg = "img/" + listImg[i][j].name + ".png";
             } else {
-                srcImg = "img/giphy.gif"
+                srcImg = "img/giphy.gif";
             }
-            tableCard += `<td><img width="630" height="630" src=${srcImg} onclick="clickImg(${i},${j})" alt="error"></td>`
+            tableCard += `<td class="table"><img width="630" height="630" src=${srcImg} onclick="clickImg(${i},${j})" alt="error"></td>`;
         }
+        tableCard += '</tr>';
     }
+    tableCard += '</table>';
     document.getElementById('display').innerHTML = tableCard;
 }
-
 showTable();
-let checkDup = [];
-function clickImg(i, j) {
-    listImg[i][j].status = true;
-    checkDup.push(listImg[i][j])
-    showTable();
-    if (checkDup.length === 2) {
-        if (checkDup[0].name === checkDup[1].name) {
-            checkDup[0].gg = true
-            checkDup[1].gg = true
-            checkDup = []
-        } else {
-            checkDup[0].status = false;
-            checkDup[1].status = false;
-            checkDup = []
-        }
 
-    } else if (checkDup.length > 2) {
-        checkDup[0].status = false;
-        checkDup[1].status = false;
-        checkDup = []
-
-    }
-    console.log(checkDup)
-
-    setTimeout(() => {
-        showTable();
-    }, 1000)
-}
 
 
