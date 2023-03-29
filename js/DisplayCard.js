@@ -8,14 +8,11 @@ class Image {
         this.status = false;
         this.gg = false;
     }
-
-    getName() {
-        return this.name;
-    }
 }
 
 let listImg = [[], [], [], []];
-let nameImg = ['chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau', 'chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau'];
+let nameImg1 = ['chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau', 'chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau'];
+let nameImg = nameImg1.sort(() => Math.random() - 0.5);
 let count = 0
 for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
@@ -23,15 +20,15 @@ for (let i = 0; i < 4; i++) {
         count++
     }
 }
+
 function showTable() {
     let tableCard = '<table border="1" cellspacing="1" width="500">'
     for (let i = 0; i < listImg.length; i++) {
         tableCard += '<tr>';
         for (let j = 0; j < listImg[0].length; j++) {
             let srcImg;
-            if (listImg[i][j].status === true || listImg[i][j].gg == true) {
+            if (listImg[i][j].status === true || listImg[i][j].gg === true) {
                 srcImg = "img/" + listImg[i][j].name + ".png"
-
             } else {
                 srcImg = "img/giphy.gif"
             }
@@ -42,9 +39,7 @@ function showTable() {
 }
 
 showTable();
-// let clickCount = 0;
 let checkDup = [];
-
 function clickImg(i, j) {
     listImg[i][j].status = true;
     checkDup.push(listImg[i][j])
@@ -60,7 +55,7 @@ function clickImg(i, j) {
             checkDup = []
         }
 
-    } else if (checkDup.length > 2){
+    } else if (checkDup.length > 2) {
         checkDup[0].status = false;
         checkDup[1].status = false;
         checkDup = []
@@ -70,13 +65,7 @@ function clickImg(i, j) {
 
     setTimeout(() => {
         showTable();
-    } , 1000)
-
-
-    //         showTable();
-    //     }
-    //     showTable()
-    // }, 2000)
+    }, 1000)
 }
 
 
