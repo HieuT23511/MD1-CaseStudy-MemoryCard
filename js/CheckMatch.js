@@ -1,3 +1,4 @@
+
 let checkMatch = [];
 let matchCount = 0;
 
@@ -42,5 +43,4 @@ function clickImg(i, j) {
 
         }
     },300)
-
 }

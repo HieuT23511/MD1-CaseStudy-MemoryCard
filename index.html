@@ -7,10 +7,17 @@
 </head>
 <body>
 <h1 class="container">Memory Card: Pokemon</h1>
+<select class="headerAndInner" onchange="level()">
+    <option value="2" > Level 1 (4 cards) </option>
+    <option value="4"> Level 2 (8 cards) </option>
+    <option value="6"> Level 3 (12 cards) </option>
+    <option value="8"> Level 4 (16 cards) </option>
+</select>
+<br>
+<button class="btnStart" type="button" id="startGame" onclick="startGame()">Start</button>
 <!--<p class="header"> Số lượt </p>-->
-<p id="display"></p>
+<p id="display" class="displayTable"></p>
 <script src="js/DisplayCard.js"></script>
 <script src="js/CheckMatch.js"></script>
-<script src="js/StartEnd.js"></script>
 </body>
 </html>
