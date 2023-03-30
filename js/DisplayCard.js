@@ -11,12 +11,12 @@ class Image {
     }
 }
 //Tạo một mảng 2 chiều, để in ra các thẻ dưới dạng table.
-let listImg = [[], [], [], []];
-let nameImg1 = ['chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau', 'chuot', 'chim', 'buom', 'coc', 'ghost', 'nuoc', 'rong', 'sau'];
-let nameImg = nameImg1.sort(() => Math.random() - 0.5);
+let listImg = [[], []];
+let arrName = ['chuot', 'chim', 'chuot', 'chim'];
+let nameImg = arrName.sort(() => Math.random() - 0.5);
 let count = 0;
-for (let i = 0; i < 4; i++) {
-    for (let j = 0; j < 4; j++) {
+for (let i = 0; i < 2; i++) {
+    for (let j = 0; j < 2; j++) {
         listImg[i][j] = new Image(nameImg[count]);
         count++
     }
@@ -41,6 +41,7 @@ function showTable() {
     document.getElementById('display').innerHTML = tableCard;
 }
 showTable();
+
 
 
 

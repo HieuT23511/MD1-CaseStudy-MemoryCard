@@ -1,4 +1,5 @@
 let checkMatch = [];
+let matchCount = 0;
 
 function clickImg(i, j) {
     listImg[i][j].status = true; // Function onclick vào bất kì vị trí thẻ nào trong bảng, in lại thẻ đó (có hình ảnh) với status = true
@@ -9,7 +10,9 @@ function clickImg(i, j) {
         if (checkMatch[0].name === checkMatch[1].name) {
             checkMatch[0].status = true;
             checkMatch[1].status = true;
-            checkMatch = []; //Cho mảng trở về là rỗng để giữ điệu kiện so sánh 2 phần tử của mảng checkMatch được liên tục
+            matchCount++;
+            checkMatch = [];
+            console.log(matchCount)//Cho mảng trở về là rỗng để giữ điệu kiện so sánh 2 phần tử của mảng checkMatch được liên tục
         } else {
             checkMatch[0].status = false;
             checkMatch[1].status = false;
@@ -26,5 +29,14 @@ function clickImg(i, j) {
     // Cài đặt timeout delay khi mở 2 thẻ unmatch sẽ in lại thẻ trắng sau 1s.
     setTimeout(() => {
         showTable();
-    }, 1000)
+    }, 800)
+    // Điều kiện end game : mở full thẻ bài match.
+    setTimeout(()=>{
+        if(matchCount===listImg.length){
+            // alert(`Nice! You win`)
+            confirm('Nice. You win! Do you want play again?');
+            location.reload();
+        }
+    },300)
+
 }
